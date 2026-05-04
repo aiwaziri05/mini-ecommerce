@@ -15,8 +15,9 @@ export type PaymentProvider = 'stripe' | 'paystack';
 // CUSTOMERS
 export type CustomerRow = {
   id: string;
+  name: string;
   email: string;
-  password_hash: string;
+  password: string;
   created_at: string;
 };
 
@@ -109,7 +110,7 @@ export type Product = {
   id: string;
   name: string;
   price: number;
-  imageUrl: string;
+  image_url: string;
   category: string;
 };
 
@@ -118,7 +119,7 @@ export type ProductDetails = {
   name: string;
   description: string;
   price: number;
-  imageUrl: string;
+  image_url: string;
   category: string;
 };
 
@@ -144,7 +145,7 @@ export type Order = {
   id: string;
   totalAmount: number;
   status: OrderStatus;
-  createdAt: string;
+  created_at: string;
 };
 
 export type OrderItem = {

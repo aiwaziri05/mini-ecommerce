@@ -5,14 +5,16 @@
 const customers = [
   {
     id: 'c1f7c9a2-8c3d-4b91-9f2a-6e8a1b5d2c10',
+    name: 'John Doe',
     email: 'john@example.com',
-    password_hash: 'hashedpassword123',
+    password: 'hashedpassword123',
     created_at: '2024-01-01T10:00:00Z',
   },
   {
     id: '9a2d6e4b-3f71-4c88-8a6b-2d9f5c7e1a33',
+    name: 'Sarah Johnson',
     email: 'sarah@example.com',
-    password_hash: 'hashedpassword456',
+    password: 'hashedpassword456',
     created_at: '2024-01-02T12:00:00Z',
   },
 ];
@@ -89,7 +91,6 @@ const carts = [
 const cart_items = [
   {
     id: 'd1a3c7e9-5b2f-4a44-8c6d-2e1b7f3a9d11',
-    cart_id: carts[0].id,
     product_id: products[0].id,
     quantity: 2,
   },
