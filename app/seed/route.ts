@@ -82,93 +82,93 @@ async function seedProducts() {
   return insertedProducts;
 }
 
-async function createCarts() {
-  await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
-  await sql`
-    CREATE TABLE IF NOT EXISTS carts (
-      id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-      customer_id UUID REFERENCES customers(id),
-      quantity INTEGER NOT NULL,
-      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )
-  `;
-  const insertedCarts = await Promise.all(
-    carts.map(async (cart) => {
-      return sql`
-        INSERT INTO carts (id, customer_id)
-        VALUES (${cart.id}, ${cart.customer_id})
-        ON CONFLICT (id) DO NOTHING
-      `;
-    }),
-  );
-  return insertedCarts;
-}
+// async function createCarts() {
+//   await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+//   await sql`
+//     CREATE TABLE IF NOT EXISTS carts (
+//       id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+//       customer_id UUID REFERENCES customers(id),
+//       quantity INTEGER NOT NULL,
+//       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+//     )
+//   `;
+//   const insertedCarts = await Promise.all(
+//     carts.map(async (cart) => {
+//       return sql`
+//         INSERT INTO carts (id, customer_id)
+//         VALUES (${cart.id}, ${cart.customer_id})
+//         ON CONFLICT (id) DO NOTHING
+//       `;
+//     }),
+//   );
+//   return insertedCarts;
+// }
 
-async function seedCartItems() {
-  await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
-  await sql`
-    CREATE TABLE IF NOT EXISTS cart_items (
-      id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-      cart_id UUID REFERENCES carts(id),
-      product_id UUID REFERENCES products(id),
-      quantity INTEGER NOT NULL
-    )
-  `;
-  const insertedCartItems = await Promise.all(
-    cart_items.map(async (item) => {
-      return sql`
-        INSERT INTO cart_items (id, cart_id, product_id, quantity)
-        VALUES (${item.id}, ${item.product_id}, ${item.quantity})
-        ON CONFLICT (id) DO NOTHING
-      `;
-    }),
-  );
-  return insertedCartItems;
-}
+// async function seedCartItems() {
+//   await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+//   await sql`
+//     CREATE TABLE IF NOT EXISTS cart_items (
+//       id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+//       cart_id UUID REFERENCES carts(id),
+//       product_id UUID REFERENCES products(id),
+//       quantity INTEGER NOT NULL
+//     )
+//   `;
+//   const insertedCartItems = await Promise.all(
+//     cart_items.map(async (item) => {
+//       return sql`
+//         INSERT INTO cart_items (id, cart_id, product_id, quantity)
+//         VALUES (${item.id}, ${item.product_id}, ${item.quantity})
+//         ON CONFLICT (id) DO NOTHING
+//       `;
+//     }),
+//   );
+//   return insertedCartItems;
+// }
 
-async function seedOrders() {
-  await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
-  await sql`
-    CREATE TABLE IF NOT EXISTS orders (
-      id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-      customer_id UUID REFERENCES customers(id),
-      total_amount INTEGER NOT NULL,
-      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )
-  `;
-  const insertedOrders = await Promise.all(
-    orders.map(async (order) => {
-      return sql`
-        INSERT INTO orders (id, customer_id, total_amount)
-        VALUES (${order.id}, ${order.customer_id}, ${order.total_amount})
-        ON CONFLICT (id) DO NOTHING
-      `;
-    }),
-  );
-  return insertedOrders;
-}
+// async function seedOrders() {
+//   await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+//   await sql`
+//     CREATE TABLE IF NOT EXISTS orders (
+//       id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+//       customer_id UUID REFERENCES customers(id),
+//       total_amount INTEGER NOT NULL,
+//       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+//     )
+//   `;
+//   const insertedOrders = await Promise.all(
+//     orders.map(async (order) => {
+//       return sql`
+//         INSERT INTO orders (id, customer_id, total_amount)
+//         VALUES (${order.id}, ${order.customer_id}, ${order.total_amount})
+//         ON CONFLICT (id) DO NOTHING
+//       `;
+//     }),
+//   );
+//   return insertedOrders;
+// }
 
-async function seedOrderItems() {
-  await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
-  await sql`
-    CREATE TABLE IF NOT EXISTS order_items (
-      id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-      order_id UUID REFERENCES orders(id),
-      product_id UUID REFERENCES products(id),
-      quantity INTEGER NOT NULL
-    )
-  `;
-  const insertedOrderItems = await Promise.all(
-    order_items.map(async (item) => {
-      return sql`
-        INSERT INTO order_items (id, order_id, product_id, quantity)
-        VALUES (${item.id}, ${item.order_id}, ${item.product_id}, ${item.quantity})
-        ON CONFLICT (id) DO NOTHING
-      `;
-    }),
-  );
-  return insertedOrderItems;
-}
+// async function seedOrderItems() {
+//   await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+//   await sql`
+//     CREATE TABLE IF NOT EXISTS order_items (
+//       id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+//       order_id UUID REFERENCES orders(id),
+//       product_id UUID REFERENCES products(id),
+//       quantity INTEGER NOT NULL
+//     )
+//   `;
+//   const insertedOrderItems = await Promise.all(
+//     order_items.map(async (item) => {
+//       return sql`
+//         INSERT INTO order_items (id, order_id, product_id, quantity)
+//         VALUES (${item.id}, ${item.order_id}, ${item.product_id}, ${item.quantity})
+//         ON CONFLICT (id) DO NOTHING
+//       `;
+//     }),
+//   );
+//   return insertedOrderItems;
+// }
 
 export async function GET() {
   try {
