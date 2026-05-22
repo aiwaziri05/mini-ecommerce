@@ -26,7 +26,6 @@ export default function SidebarFilter() {
         </h3>
 
         <div className='space-y-4'>
-          {/* Filter Group: Categories (Matched to Image) */}
           <div className='border-b border-gray-100 pb-4'>
             <button
               onClick={() => toggleSection('categories')}
