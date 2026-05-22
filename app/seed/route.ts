@@ -5,9 +5,7 @@ import {
   categories,
   products,
   carts,
-  cart_items,
   orders,
-  order_items,
 } from '../lib/placeholder-data';
 
 async function seedCustomers() {
