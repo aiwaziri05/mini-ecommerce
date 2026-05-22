@@ -136,7 +136,6 @@ export default function SidebarFilter() {
             )}
           </div>
 
-          {/* Filter Group: Availability */}
           <div className='pb-2'>
             <button
               onClick={() => toggleSection('availability')}
