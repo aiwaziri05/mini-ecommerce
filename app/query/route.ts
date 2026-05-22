@@ -13,7 +13,14 @@ import sql from '../lib/db';
 // };
 
 async function listProducts() {
-  return sql`SELECT categories.name, products.name, products.price, products.description, products.image_url FROM categories JOIN products ON categories.id = products.category_id`;
+  return sql`
+    SELECT categories.name AS category_name,
+    products.name,
+    products.price,
+    products.description,
+    products.image_url,
+    products.rating FROM categories JOIN products ON categories.id = products.category_id
+    WHERE categories.id = ${'7b1f3d2a-5c6e-4a91-8b2c-9d3f7e1a4c55'}`;
 }
 
 export async function GET() {
