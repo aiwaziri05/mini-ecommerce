@@ -62,19 +62,21 @@ async function seedProducts() {
     CREATE TABLE IF NOT EXISTS products (
       id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
       name VARCHAR(255) NOT NULL,
-      description TEXT,
       price INTEGER NOT NULL,
-      image_url TEXT,
+      description TEXT,
       category_id UUID REFERENCES categories(id),
-      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      image_url TEXT,
+      rating JSONB NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
   `;
 
   const insertedProducts = await Promise.all(
     products.map(async (product) => {
       return sql`
-        INSERT INTO products (id, name, description, price, image_url, category_id)
-        VALUES (${product.id}, ${product.name}, ${product.description}, ${product.price}, ${product.image_url}, ${product.category_id})
+        INSERT INTO products (id, name, price, description, category_id, image_url, rating)
+        VALUES (${product.id}, ${product.name}, ${product.price}, ${product.description}, ${product.category_id}, ${product.image_url}, ${JSON.stringify(product.rating)})
         ON CONFLICT (id) DO NOTHING
       `;
     }),
@@ -173,13 +175,13 @@ async function seedOrderItems() {
 export async function GET() {
   try {
     const result = await sql.begin((sql) => {
-      seedCustomers();
-      seedCategories();
+      // seedCustomers();
+      // seedCategories();
       seedProducts();
-      createCarts();
-      seedCartItems();
-      seedOrders();
-      seedOrderItems();
+      // createCarts();
+      // seedCartItems();
+      // seedOrders();
+      // seedOrderItems();
     });
 
     return Response.json({

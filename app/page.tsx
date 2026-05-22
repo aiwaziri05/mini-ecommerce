@@ -1,3 +1,4 @@
-export default function Home() {
-  return <h1 className='text-4xl'>Mini E-Commerce</h1>;
+import ProductCards from '@/app/ui/product-cards';
+export default async function Home() {
+  return <ProductCards />;
 }
