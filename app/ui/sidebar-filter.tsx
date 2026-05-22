@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { ChevronDownIcon } from '@heroicons/react/16/solid';
 
 export default function SidebarFilter() {
   // State to handle accordion toggle sections
@@ -32,19 +33,9 @@ export default function SidebarFilter() {
               className='flex items-center justify-between w-full text-sm font-semibold text-gray-800 py-2 hover:text-blue-600 transition-colors'
             >
               Category
-              <svg
+              <ChevronDownIcon
                 className={`w-4 h-4 transform transition-transform duration-200 ${openSections.categories ? 'rotate-180' : ''}`}
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth={2}
-                  d='M19 9l-7 7-7-7'
-                />
-              </svg>
+              />
             </button>
 
             {openSections.categories && (
@@ -78,19 +69,9 @@ export default function SidebarFilter() {
               className='flex items-center justify-between w-full text-sm font-semibold text-gray-800 py-2 hover:text-blue-600 transition-colors'
             >
               Price Range
-              <svg
+              <ChevronDownIcon
                 className={`w-4 h-4 transform transition-transform duration-200 ${openSections.priceRange ? 'rotate-180' : ''}`}
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth={2}
-                  d='M19 9l-7 7-7-7'
-                />
-              </svg>
+              />
             </button>
 
             {openSections.priceRange && (
@@ -125,19 +106,12 @@ export default function SidebarFilter() {
               className='flex items-center justify-between w-full text-sm font-semibold text-gray-800 py-2 hover:text-blue-600 transition-colors'
             >
               Color
-              <svg
+              <ChevronDownIcon
                 className={`w-4 h-4 transform transition-transform duration-200 ${openSections.color ? 'rotate-180' : ''}`}
                 fill='none'
                 viewBox='0 0 24 24'
                 stroke='currentColor'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth={2}
-                  d='M19 9l-7 7-7-7'
-                />
-              </svg>
+              />
             </button>
 
             {openSections.color && (
@@ -169,19 +143,9 @@ export default function SidebarFilter() {
               className='flex items-center justify-between w-full text-sm font-semibold text-gray-800 py-2 hover:text-blue-600 transition-colors'
             >
               Availability
-              <svg
+              <ChevronDownIcon
                 className={`w-4 h-4 transform transition-transform duration-200 ${openSections.availability ? 'rotate-180' : ''}`}
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth={2}
-                  d='M19 9l-7 7-7-7'
-                />
-              </svg>
+              />
             </button>
 
             {openSections.availability && (
