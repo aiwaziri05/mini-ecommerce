@@ -72,7 +72,6 @@ export default function SidebarFilter() {
             )}
           </div>
 
-          {/* Filter Group: Price Range (Naira ₦ Matched to Image) */}
           <div className='border-b border-gray-100 pb-4'>
             <button
               onClick={() => toggleSection('priceRange')}
